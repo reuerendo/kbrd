@@ -1,3 +1,45 @@
+const robot = require('robotjs');
+
+// Обработчик нажатий клавиш
+document.querySelectorAll('.key').forEach(key => {
+    key.addEventListener('click', () => {
+        const keyValue = key.getAttribute('data-key');
+        
+        if (!keyValue) return;
+
+        try {
+            // Специальные клавиши
+            const specialKeys = {
+                'Escape': 'escape',
+                'Tab': 'tab',
+                'CapsLock': 'capslock',
+                'Shift': 'shift',
+                'Enter': 'enter',
+                'Backspace': 'backspace',
+                'control': 'control',
+                'alt': 'alt',
+                'space': 'space',
+                'ArrowUp': 'up',
+                'ArrowDown': 'down',
+                'ArrowLeft': 'left',
+                'ArrowRight': 'right',
+                'delete': 'delete'
+            };
+
+            if (specialKeys[keyValue]) {
+                robot.keyTap(specialKeys[keyValue]);
+            } else if (keyValue === 'lang' || keyValue === 'sym') {
+                // Игнорируем пока
+                console.log('Special key:', keyValue);
+            } else {
+                robot.keyTap(keyValue);
+            }
+        } catch (error) {
+            console.error('Key press error:', error);
+        }
+    });
+});
+
 body {
     margin: 0;
     padding: 0;
