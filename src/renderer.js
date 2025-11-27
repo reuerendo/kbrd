@@ -1,0 +1,95 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Segoe UI Variable Display", "Segoe UI", sans-serif;
+    background-color: transparent; /* Важно для формы */
+    overflow: hidden;
+    user-select: none; /* Чтобы текст на кнопках не выделялся */
+}
+
+/* Зона для перетаскивания окна */
+.drag-handle {
+    height: 20px;
+    width: 100%;
+    -webkit-app-region: drag;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+
+.panel {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+    /* Fluent Acrylic Effect simulation */
+	background-color: rgba(255, 255, 255, 0.85); 
+    backdrop-filter: blur(20px);
+	width: 760px;
+	padding: 16px;
+	border: solid 1px rgba(0, 0, 0, 0.1);
+	border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Dark mode support (System automatic) */
+@media (prefers-color-scheme: dark) {
+    .panel {
+        background-color: rgba(32, 32, 32, 0.85);
+        border: solid 1px rgba(255, 255, 255, 0.1);
+        color: white;
+    }
+}
+
+.row {
+	display: flex;
+	gap: 4px;
+	width: 100%;
+}
+
+.padding {
+	padding-bottom: 8px;
+}
+
+.row .key {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+    /* Fluent Key Styling */
+	border: none;
+    background-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+	border-radius: 4px;
+	font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.1s, transform 0.05s;
+    color: inherit;
+}
+
+@media (prefers-color-scheme: dark) {
+    .row .key {
+        background-color: rgba(255, 255, 255, 0.06);
+    }
+}
+
+/* Hover and Click effects similar to Windows 11 */
+.row .key:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+@media (prefers-color-scheme: dark) {
+    .row .key:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+}
+
+.row .key:active {
+    transform: scale(0.96);
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Размеры из вашего CSS */
+.bar { flex: 1; height: 24px; }
+.close { width: 24px; }
+.key { height: 40px; }
+.sqr { width: 40px; }
+.rec { width: auto; flex: 1; }
